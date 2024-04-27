@@ -2,6 +2,7 @@ package com.ejs.legacyrefactoringexample;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /*
 기존: 멕시코이면 key가 remark이고 값이 개인통관번호,
@@ -34,18 +35,22 @@ public class Example1 {
         if (vatCode.startsWith("FR")) {
             key = "vatcode";
             value = vatCode;
-            request.put(key, value);
         } else if ("MX".equals(delivery.countryId())) {
             key = "remark";
             value = delivery.passNo();
-            request.put(key, value);
         } else {
             key = null;
             value = null;
-            request.put(key, value);
         }
+        putIfNotNull(request, key, value);
 
         // 200 line...
+    }
+
+    private void putIfNotNull(final Map<String, String> request, final String key, final String value) {
+        if (Objects.nonNull(key) && Objects.nonNull(value)) {
+            request.put(key, value);
+        }
     }
 
     private record Delivery(
