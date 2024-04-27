@@ -31,9 +31,9 @@ public class Example1 {
                 vatCode = "FR" + vatCode;
             }
 
-            if (vatCode.startsWith("FR")) {
-                request.put("vatcode", vatCode);
-            }
+        }
+        if (vatCode.startsWith("FR")) {
+            request.put("vatcode", vatCode);
         }
 
         // 200 line...
