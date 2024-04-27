@@ -26,7 +26,7 @@ public class Example1 {
         }
 
         String vatCode = delivery.vatCode().trim();
-        if (0 < vatCode.length()) {
+        if (!vatCode.isEmpty()) {
             if ("FR".equals(delivery.countryId().trim())) {
                 vatCode = "FR" + vatCode;
             }
