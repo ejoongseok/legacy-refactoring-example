@@ -11,24 +11,16 @@ public class CustomsCode {
         this.passNo = passNo;
     }
 
-    public String vatCode() {return vatCode;}
-
-    public String countryId() {return countryId;}
-
-    public String passNo() {return passNo;}
-
     String getValue() {
-        if (vatCode().startsWith("FR")) {
-            return vatCode();
-        } else if ("MX".equals(countryId())) {
-            return passNo();
+        if (vatCode.startsWith("FR")) {
+            return vatCode;
+        } else if ("MX".equals(countryId)) {
+            return passNo;
         }
         return null;
     }
 
     String getKey() {
-        final String vatCode = vatCode();
-        final String countryId = countryId();
         if (vatCode.startsWith("FR")) {
             return "vatcode";
         } else if ("MX".equals(countryId)) {
