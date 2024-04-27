@@ -31,17 +31,17 @@ public class Example1 {
 
         }
         final String key = getKey(vatCode, delivery.countryId());
-        final String value = getValue(vatCode, delivery.countryId(), delivery.passNo());
+        final String value = getValue(new CustomsCode(vatCode, delivery.countryId(), delivery.passNo()));
         putIfNotNull(request, key, value);
 
         // 200 line...
     }
 
-    private String getValue(final String vatCode, final String countryId, final String passNo) {
-        if (vatCode.startsWith("FR")) {
-            return vatCode;
-        } else if ("MX".equals(countryId)) {
-            return passNo;
+    private String getValue(final CustomsCode customsCode) {
+        if (customsCode.vatCode().startsWith("FR")) {
+            return customsCode.vatCode();
+        } else if ("MX".equals(customsCode.countryId())) {
+            return customsCode.passNo();
         }
         return null;
     }
