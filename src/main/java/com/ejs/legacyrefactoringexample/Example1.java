@@ -31,14 +31,16 @@ public class Example1 {
 
         }
         final CustomsCode customsCode = new CustomsCode(vatCode, delivery.countryId(), delivery.passNo());
-        final String key = getKey(customsCode.vatCode(), customsCode.countryId());
+        final String key = getKey(customsCode);
         final String value = customsCode.getValue();
         putIfNotNull(request, key, value);
 
         // 200 line...
     }
 
-    private String getKey(final String vatCode, final String countryId) {
+    private String getKey(final CustomsCode customsCode) {
+        final String vatCode = customsCode.vatCode();
+        final String countryId = customsCode.countryId();
         if (vatCode.startsWith("FR")) {
             return "vatcode";
         } else if ("MX".equals(countryId)) {
