@@ -21,9 +21,6 @@ public class Example1 {
         // 200 line...
 
         final Map<String, String> request = new HashMap<>();
-        if ("MX".equals(delivery.countryId())) {
-            request.put("remark", delivery.passNo());
-        }
 
         String vatCode = delivery.vatCode().trim();
         if (!vatCode.isEmpty()) {
@@ -34,6 +31,9 @@ public class Example1 {
         }
         if (vatCode.startsWith("FR")) {
             request.put("vatcode", vatCode);
+        }
+        if ("MX".equals(delivery.countryId())) {
+            request.put("remark", delivery.passNo());
         }
 
         // 200 line...
