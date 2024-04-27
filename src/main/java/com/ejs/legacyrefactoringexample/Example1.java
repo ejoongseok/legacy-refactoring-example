@@ -29,13 +29,15 @@ public class Example1 {
             }
 
         }
+        final String key;
+        final String value;
         if (vatCode.startsWith("FR")) {
-            final String key = "vatcode";
-            final String value = vatCode;
+            key = "vatcode";
+            value = vatCode;
             request.put(key, value);
         } else if ("MX".equals(delivery.countryId())) {
-            final String key = "remark";
-            final String value = delivery.passNo();
+            key = "remark";
+            value = delivery.passNo();
             request.put(key, value);
         }
 
