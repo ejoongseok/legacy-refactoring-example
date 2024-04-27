@@ -30,8 +30,9 @@ public class Example1 {
             }
 
         }
+        final CustomsCode customsCode = new CustomsCode(vatCode, delivery.countryId(), delivery.passNo());
         final String key = getKey(vatCode, delivery.countryId());
-        final String value = new CustomsCode(vatCode, delivery.countryId(), delivery.passNo()).getValue();
+        final String value = customsCode.getValue();
         putIfNotNull(request, key, value);
 
         // 200 line...
