@@ -42,6 +42,16 @@ public class Example1 {
             key = null;
             value = null;
         }
+        if (vatCode.startsWith("FR")) {
+            key = "vatcode";
+            value = vatCode;
+        } else if ("MX".equals(delivery.countryId())) {
+            key = "remark";
+            value = delivery.passNo();
+        } else {
+            key = null;
+            value = null;
+        }
         putIfNotNull(request, key, value);
 
         // 200 line...
