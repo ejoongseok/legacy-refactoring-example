@@ -12,20 +12,18 @@ public class CustomsCode {
     }
 
     String getValue() {
-        if (vatCode.startsWith("FR") || "GB".equals(countryId)) {
-            return vatCode;
-        } else if ("MX".equals(countryId) || "ID".equals(countryId)) {
-            return passNo;
-        }
-        return passNo;
+        return isFranceOrGb() ? vatCode : passNo;
+    }
+
+    private boolean isMexicoOrIndonesia() {
+        return "MX".equals(countryId) || "ID".equals(countryId);
+    }
+
+    private boolean isFranceOrGb() {
+        return vatCode.startsWith("FR") || "GB".equals(countryId);
     }
 
     String getKey() {
-        if (vatCode.startsWith("FR") || "GB".equals(countryId)) {
-            return "vatcode";
-        } else if ("MX".equals(countryId) || "ID".equals(countryId)) {
-            return "remark";
-        }
-        return "vatcode";
+        return isMexicoOrIndonesia() ? "remark" : "vatcode";
     }
 }
