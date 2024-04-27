@@ -31,7 +31,7 @@ public class Example1 {
                 vatCode = "FR" + vatCode;
             }
 
-            if ("FR".equals(vatCode.substring(0, 2))) {
+            if (vatCode.startsWith("FR")) {
                 request.put("vatcode", vatCode);
             }
         }
