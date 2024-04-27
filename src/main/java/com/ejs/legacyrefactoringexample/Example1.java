@@ -31,25 +31,19 @@ public class Example1 {
 
         }
         final String key;
+        if (vatCode.startsWith("FR")) {
+            key = "vatcode";
+        } else if ("MX".equals(delivery.countryId())) {
+            key = "remark";
+        } else {
+            key = null;
+        }
         final String value;
         if (vatCode.startsWith("FR")) {
-            key = "vatcode";
             value = vatCode;
         } else if ("MX".equals(delivery.countryId())) {
-            key = "remark";
             value = delivery.passNo();
         } else {
-            key = null;
-            value = null;
-        }
-        if (vatCode.startsWith("FR")) {
-            key = "vatcode";
-            value = vatCode;
-        } else if ("MX".equals(delivery.countryId())) {
-            key = "remark";
-            value = delivery.passNo();
-        } else {
-            key = null;
             value = null;
         }
         putIfNotNull(request, key, value);
