@@ -30,14 +30,14 @@ public class Example1 {
             }
 
         }
-        final String key;
-        if (vatCode.startsWith("FR")) {
-            key = "vatcode";
-        } else if ("MX".equals(delivery.countryId())) {
-            key = "remark";
-        } else {
-            key = null;
-        }
+        final String key = getKey(delivery, vatCode);
+        final String value = getValue(delivery, vatCode);
+        putIfNotNull(request, key, value);
+
+        // 200 line...
+    }
+
+    private String getValue(final Delivery delivery, final String vatCode) {
         final String value;
         if (vatCode.startsWith("FR")) {
             value = vatCode;
@@ -46,9 +46,19 @@ public class Example1 {
         } else {
             value = null;
         }
-        putIfNotNull(request, key, value);
+        return value;
+    }
 
-        // 200 line...
+    private String getKey(final Delivery delivery, final String vatCode) {
+        final String key;
+        if (vatCode.startsWith("FR")) {
+            key = "vatcode";
+        } else if ("MX".equals(delivery.countryId())) {
+            key = "remark";
+        } else {
+            key = null;
+        }
+        return key;
     }
 
     private void putIfNotNull(final Map<String, String> request, final String key, final String value) {
