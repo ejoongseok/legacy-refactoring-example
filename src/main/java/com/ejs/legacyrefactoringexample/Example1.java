@@ -30,9 +30,13 @@ public class Example1 {
 
         }
         if (vatCode.startsWith("FR")) {
-            request.put("vatcode", vatCode);
+            final String key = "vatcode";
+            final String value = vatCode;
+            request.put(key, value);
         } else if ("MX".equals(delivery.countryId())) {
-            request.put("remark", delivery.passNo());
+            final String key = "remark";
+            final String value = delivery.passNo();
+            request.put(key, value);
         }
 
         // 200 line...
