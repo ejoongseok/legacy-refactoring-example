@@ -31,8 +31,7 @@ public class Example1 {
         }
         if (vatCode.startsWith("FR")) {
             request.put("vatcode", vatCode);
-        }
-        if ("MX".equals(delivery.countryId())) {
+        } else if ("MX".equals(delivery.countryId())) {
             request.put("remark", delivery.passNo());
         }
 
