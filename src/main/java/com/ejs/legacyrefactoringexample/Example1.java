@@ -25,14 +25,14 @@ public class Example1 {
             request.put("remark", delivery.passNo());
         }
 
-        String vat = delivery.vatCode().trim();
-        if (0 < vat.length()) {
+        String vatCode = delivery.vatCode().trim();
+        if (0 < vatCode.length()) {
             if ("FR".equals(delivery.countryId().trim())) {
-                vat = "FR" + vat;
+                vatCode = "FR" + vatCode;
             }
 
-            if ("FR".equals(vat.substring(0, 2))) {
-                request.put("vatcode", vat);
+            if ("FR".equals(vatCode.substring(0, 2))) {
+                request.put("vatcode", vatCode);
             }
         }
 
