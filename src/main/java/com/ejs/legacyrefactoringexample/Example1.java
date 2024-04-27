@@ -30,26 +30,26 @@ public class Example1 {
             }
 
         }
-        final String key = getKey(delivery, vatCode);
-        final String value = getValue(delivery, vatCode);
+        final String key = getKey(vatCode, delivery.countryId());
+        final String value = getValue(vatCode, delivery.countryId(), delivery.passNo());
         putIfNotNull(request, key, value);
 
         // 200 line...
     }
 
-    private String getValue(final Delivery delivery, final String vatCode) {
+    private String getValue(final String vatCode, final String countryId, final String passNo) {
         if (vatCode.startsWith("FR")) {
             return vatCode;
-        } else if ("MX".equals(delivery.countryId())) {
-            return delivery.passNo();
+        } else if ("MX".equals(countryId)) {
+            return passNo;
         }
         return null;
     }
 
-    private String getKey(final Delivery delivery, final String vatCode) {
+    private String getKey(final String vatCode, final String countryId) {
         if (vatCode.startsWith("FR")) {
             return "vatcode";
-        } else if ("MX".equals(delivery.countryId())) {
+        } else if ("MX".equals(countryId)) {
             return "remark";
         }
         return null;
