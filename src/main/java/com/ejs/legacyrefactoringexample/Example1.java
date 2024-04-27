@@ -39,6 +39,10 @@ public class Example1 {
             key = "remark";
             value = delivery.passNo();
             request.put(key, value);
+        } else {
+            key = null;
+            value = null;
+            request.put(key, value);
         }
 
         // 200 line...
