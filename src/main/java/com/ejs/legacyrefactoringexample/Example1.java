@@ -31,7 +31,7 @@ public class Example1 {
 
         }
         final CustomsCode customsCode = new CustomsCode(vatCode, delivery.countryId(), delivery.passNo());
-        final String key = getKey(vatCode, delivery.countryId());
+        final String key = getKey(customsCode.vatCode(), customsCode.countryId());
         final String value = customsCode.getValue();
         putIfNotNull(request, key, value);
 
