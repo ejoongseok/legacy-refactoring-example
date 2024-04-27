@@ -42,9 +42,8 @@ public class Example1 {
             return vatCode;
         } else if ("MX".equals(delivery.countryId())) {
             return delivery.passNo();
-        } else {
-            return null;
         }
+        return null;
     }
 
     private String getKey(final Delivery delivery, final String vatCode) {
@@ -52,9 +51,8 @@ public class Example1 {
             return "vatcode";
         } else if ("MX".equals(delivery.countryId())) {
             return "remark";
-        } else {
-            return null;
         }
+        return null;
     }
 
     private void putIfNotNull(final Map<String, String> request, final String key, final String value) {
