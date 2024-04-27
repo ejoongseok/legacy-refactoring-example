@@ -31,9 +31,7 @@ public class Example1 {
 
         }
         final CustomsCode customsCode = new CustomsCode(vatCode, delivery.countryId(), delivery.passNo());
-        final String key = customsCode.getKey();
-        final String value = customsCode.getValue();
-        putIfNotNull(request, key, value);
+        putIfNotNull(request, customsCode.getKey(), customsCode.getValue());
 
         // 200 line...
     }
