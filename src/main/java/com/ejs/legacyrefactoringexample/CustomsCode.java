@@ -25,4 +25,15 @@ public class CustomsCode {
         }
         return null;
     }
+
+    String getKey() {
+        final String vatCode = vatCode();
+        final String countryId = countryId();
+        if (vatCode.startsWith("FR")) {
+            return "vatcode";
+        } else if ("MX".equals(countryId)) {
+            return "remark";
+        }
+        return null;
+    }
 }

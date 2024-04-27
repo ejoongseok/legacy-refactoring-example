@@ -31,22 +31,11 @@ public class Example1 {
 
         }
         final CustomsCode customsCode = new CustomsCode(vatCode, delivery.countryId(), delivery.passNo());
-        final String key = getKey(customsCode);
+        final String key = customsCode.getKey();
         final String value = customsCode.getValue();
         putIfNotNull(request, key, value);
 
         // 200 line...
-    }
-
-    private String getKey(final CustomsCode customsCode) {
-        final String vatCode = customsCode.vatCode();
-        final String countryId = customsCode.countryId();
-        if (vatCode.startsWith("FR")) {
-            return "vatcode";
-        } else if ("MX".equals(countryId)) {
-            return "remark";
-        }
-        return null;
     }
 
     private void putIfNotNull(final Map<String, String> request, final String key, final String value) {
