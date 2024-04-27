@@ -31,19 +31,10 @@ public class Example1 {
 
         }
         final String key = getKey(vatCode, delivery.countryId());
-        final String value = getValue(new CustomsCode(vatCode, delivery.countryId(), delivery.passNo()));
+        final String value = new CustomsCode(vatCode, delivery.countryId(), delivery.passNo()).getValue();
         putIfNotNull(request, key, value);
 
         // 200 line...
-    }
-
-    private String getValue(final CustomsCode customsCode) {
-        if (customsCode.vatCode().startsWith("FR")) {
-            return customsCode.vatCode();
-        } else if ("MX".equals(customsCode.countryId())) {
-            return customsCode.passNo();
-        }
-        return null;
     }
 
     private String getKey(final String vatCode, final String countryId) {

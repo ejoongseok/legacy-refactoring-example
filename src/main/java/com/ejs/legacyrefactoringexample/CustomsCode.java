@@ -17,4 +17,12 @@ public class CustomsCode {
 
     public String passNo() {return passNo;}
 
+    String getValue() {
+        if (vatCode().startsWith("FR")) {
+            return vatCode();
+        } else if ("MX".equals(countryId())) {
+            return passNo();
+        }
+        return null;
+    }
 }
