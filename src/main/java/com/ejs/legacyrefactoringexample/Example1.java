@@ -38,27 +38,23 @@ public class Example1 {
     }
 
     private String getValue(final Delivery delivery, final String vatCode) {
-        final String value;
         if (vatCode.startsWith("FR")) {
-            value = vatCode;
+            return vatCode;
         } else if ("MX".equals(delivery.countryId())) {
-            value = delivery.passNo();
+            return delivery.passNo();
         } else {
-            value = null;
+            return null;
         }
-        return value;
     }
 
     private String getKey(final Delivery delivery, final String vatCode) {
-        final String key;
         if (vatCode.startsWith("FR")) {
-            key = "vatcode";
+            return "vatcode";
         } else if ("MX".equals(delivery.countryId())) {
-            key = "remark";
+            return "remark";
         } else {
-            key = null;
+            return null;
         }
-        return key;
     }
 
     private void putIfNotNull(final Map<String, String> request, final String key, final String value) {
